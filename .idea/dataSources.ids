@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - dbcpsystem@127.0.0.1" uuid="e75a241f-bd9f-4099-95c1-00c55688b5f3">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="dbcpsystem"/>
+    <table name="tblbranches" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strBranchCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strBranchName" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strBranchAddress" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strBranchContNum" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strBranchFaxNum" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strBranchCode"/>
+      <exported-key name="BBranch_Code" table="tblempbranch" schema="" catalog="dbcpsystem" columns="strEBBranchCode"/>
+      <index name="strBranchAddress_UNIQUE" unique="true" columns="strBranchAddress"/>
+      <index name="strBranchCode_UNIQUE" unique="true" columns="strBranchCode"/>
+      <index name="strBranchFaxNum_UNIQUE" unique="true" columns="strBranchFaxNum"/>
+      <index name="strBranchName_UNIQUE" unique="true" columns="strBranchName"/>
+      <index name="strBranctContNum_UNIQUE" unique="true" columns="strBranchContNum"/>
+    </table>
+    <table name="tbldiscounts" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strDiscCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strDiscName" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="dblDiscPerc" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MA=="/>
+      <column name="decDiscAmt" sqlType="DECIMAL" precision="10" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="strDiscDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="strDiscCode"/>
+      <index name="strDiscCode_UNIQUE" unique="true" columns="strDiscCode"/>
+      <index name="strDiscName_UNIQUE" unique="true" columns="strDiscName"/>
+    </table>
+    <table name="tblempbranch" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strEBEmpCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strEBBranchCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="dtmDate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="strEBEmpCode"/>
+      <foreign-key name="BBranch_Code" columns="strEBBranchCode" ref-table="tblbranches" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strBranchCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="BEmp_Code" columns="strEBEmpCode" ref-table="tblemployee" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strEmpCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="strEBEmpCode_UNIQUE" unique="true" columns="strEBEmpCode"/>
+      <index name="Branch_Code_idx" unique="false" columns="strEBBranchCode"/>
+    </table>
+    <table name="tblempjobdesc" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strEJCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strEJName" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strEJDescription" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="intUserLevel" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strEJCode"/>
+      <exported-key name="Emp_JobCode" table="tblemployee" schema="" catalog="dbcpsystem" columns="strEmpJobCode"/>
+      <index name="strEJDescCode_UNIQUE" unique="true" columns="strEJCode"/>
+      <index name="strEJDName_UNIQUE" unique="true" columns="strEJName"/>
+    </table>
+    <table name="tblemployee" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strEmpCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strEmpFName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strEmpMName" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strEmpLName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strEmpAddress" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strEmpContNum" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strEmpJobCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strEmpCode"/>
+      <foreign-key name="Emp_JobCode" columns="strEmpJobCode" ref-table="tblempjobdesc" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strEJCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <exported-key name="BEmp_Code" table="tblempbranch" schema="" catalog="dbcpsystem" columns="strEBEmpCode"/>
+      <index name="strAddress_UNIQUE" unique="true" columns="strEmpAddress"/>
+      <index name="strEmpCode_UNIQUE" unique="true" columns="strEmpCode"/>
+      <index name="strEmpContNum_UNIQUE" unique="true" columns="strEmpContNum"/>
+    </table>
+    <table name="tblformpack" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strFPFormCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strFPPackCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="strFPFormCode,strFPPackCode"/>
+      <foreign-key name="FP_FormCode" columns="strFPFormCode" ref-table="tblpmform" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPMFormCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FP_PackCode" columns="strFPPackCode" ref-table="tblpmpackaging" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPMPackCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="FP_PackCode_idx" unique="false" columns="strFPPackCode"/>
+    </table>
+    <table name="tblgensize" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strGenSizeCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strGenSizeName" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="intGenSizeValue" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strGenSizeCode"/>
+      <exported-key name="Gene_SizeCode" table="tblnmedgeneral" schema="" catalog="dbcpsystem" columns="strNMGenSizeCode"/>
+      <index name="strGenSizeCode_UNIQUE" unique="true" columns="strGenSizeCode"/>
+      <index name="strGenSizeName_UNIQUE" unique="true" columns="strGenSizeName"/>
+    </table>
+    <table name="tblmemaccount" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strMemAcctCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strMemAcctPinCode" sqlType="CHAR" precision="4" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="strMemAcctCode"/>
+      <foreign-key name="AMem_Code" columns="strMemAcctCode" ref-table="tblmember" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strMemCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <exported-key name="CMem_Code" table="tblmemcredit" schema="" catalog="dbcpsystem" columns="strMCreditCode"/>
+      <exported-key name="PMem_Code" table="tblmempoints" schema="" catalog="dbcpsystem" columns="strMPointCode"/>
+      <index name="strMemAcctCode_UNIQUE" unique="true" columns="strMemAcctCode"/>
+    </table>
+    <table name="tblmember" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strMemCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strMemFName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strMemMName" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strMemLName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="datMemBirthday" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="strMemOSCAID" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strMemAddress" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strMemHomeNum" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strMemContNum" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strMemEmail" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="imgMemPhoto" sqlType="BLOB" precision="65535" scale="0" nullable="true" jdbcType="-4"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strMemCode"/>
+      <exported-key name="AMem_Code" table="tblmemaccount" schema="" catalog="dbcpsystem" columns="strMemAcctCode"/>
+      <exported-key name="CaMem_Code" table="tblmemcard" schema="" catalog="dbcpsystem" columns="strMCardCode"/>
+      <index name="strMemAddress_UNIQUE" unique="true" columns="strMemAddress"/>
+      <index name="strMemCode_UNIQUE" unique="true" columns="strMemCode"/>
+      <index name="strMemContNum_UNIQUE" unique="true" columns="strMemContNum"/>
+      <index name="strMemEmail_UNIQUE" unique="true" columns="strMemEmail"/>
+      <index name="strMemName" unique="true" columns="strMemFName,strMemMName,strMemLName"/>
+      <index name="strMemOSCAID_UNIQUE" unique="true" columns="strMemOSCAID"/>
+    </table>
+    <table name="tblmemcard" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strMCardCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strMCardID" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strMCardQRCode" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="imgMCardQRCode" sqlType="BLOB" precision="65535" scale="0" nullable="false" jdbcType="-4"/>
+      <column name="intIsActive" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strMCardCode,strMCardID"/>
+      <foreign-key name="CaMem_Code" columns="strMCardCode" ref-table="tblmember" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strMemCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="strMCard_Identifier" unique="true" columns="strMCardID,strMCardCode"/>
+      <index name="strMCardID_UNIQUE" unique="true" columns="strMCardID"/>
+      <index name="strMCardQRCode_UNIQUE" unique="true" columns="strMCardQRCode"/>
+    </table>
+    <table name="tblmemcredit" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strMCreditCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="decMCreditValue" sqlType="DECIMAL" precision="10" scale="0" nullable="false" jdbcType="3"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="strMCreditCode"/>
+      <foreign-key name="CMem_Code" columns="strMCreditCode" ref-table="tblmemaccount" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strMemAcctCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="strMCreditCode_UNIQUE" unique="true" columns="strMCreditCode"/>
+    </table>
+    <table name="tblmempoints" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strMPointCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="decMPoinValue" sqlType="DECIMAL" precision="10" scale="0" nullable="false" jdbcType="3"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="strMPointCode"/>
+      <foreign-key name="PMem_Code" columns="strMPointCode" ref-table="tblmemaccount" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strMemAcctCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="strMPointCode_UNIQUE" unique="true" columns="strMPointCode"/>
+    </table>
+    <table name="tblnmedcategory" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strNMedCatCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strNMedCatName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strNMedDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strNMedCatCode"/>
+      <exported-key name="ProdNonMed_CatCode" table="tblprodnonmed" schema="" catalog="dbcpsystem" columns="strProdNMedCatCode"/>
+      <index name="strNMedCarCode_UNIQUE" unique="true" columns="strNMedCatCode"/>
+      <index name="strNMedCatName_UNIQUE" unique="true" columns="strNMedCatName"/>
+    </table>
+    <table name="tblnmedgeneral" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strNMGenCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strNMGenSizeCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="strNMGenCode"/>
+      <foreign-key name="Gene_ProdNonMedCode" columns="strNMGenCode" ref-table="tblprodnonmed" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strProdNMedCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Gene_SizeCode" columns="strNMGenSizeCode" ref-table="tblgensize" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strGenSizeCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="strNMGenCode_UNIQUE" unique="true" columns="strNMGenCode"/>
+      <index name="Gene_SizeCode_idx" unique="false" columns="strNMGenSizeCode"/>
+    </table>
+    <table name="tblnmedstandard" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strNMStanCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="decNMStanSize" sqlType="DECIMAL" precision="10" scale="0" nullable="false" jdbcType="3"/>
+      <column name="strNMStanUOMCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="strNMStanCode"/>
+      <foreign-key name="Stan_ProdNonMed" columns="strNMStanCode" ref-table="tblprodnonmed" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strProdNMedCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Stan_UOMCode" columns="strNMStanUOMCode" ref-table="tbluom" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strUOMCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="strNMStanCode_UNIQUE" unique="true" columns="strNMStanCode"/>
+      <index name="Stan_UOMCode_idx" unique="false" columns="strNMStanUOMCode"/>
+    </table>
+    <table name="tblpackages" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPackCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPackName" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="dtmPackFrom" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="dtmPackTo" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="decPackPrice" sqlType="DECIMAL" precision="10" scale="0" nullable="false" jdbcType="3"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="strPackCode"/>
+      <exported-key name="Pack_Code" table="tblpackproducts" schema="" catalog="dbcpsystem" columns="strPackProdCode"/>
+      <index name="strPackCode_UNIQUE" unique="true" columns="strPackCode"/>
+      <index name="strPackName_UNIQUE" unique="true" columns="strPackName"/>
+    </table>
+    <table name="tblpackproducts" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPackProdCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPackProdProdCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="intPackProdQuantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="strPackProdCode,strPackProdProdCode"/>
+      <foreign-key name="Pack_Code" columns="strPackProdCode" ref-table="tblpackages" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPackCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="PaProd_Code" columns="strPackProdProdCode" ref-table="tblproducts" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strProdCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="Prod_Code_idx" unique="false" columns="strPackProdProdCode"/>
+    </table>
+    <table name="tblpmform" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPMFormCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPMFormName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strPMFormDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strPMFormCode"/>
+      <exported-key name="FP_FormCode" table="tblformpack" schema="" catalog="dbcpsystem" columns="strFPFormCode"/>
+      <exported-key name="ProdMed_FormCode" table="tblprodmed" schema="" catalog="dbcpsystem" columns="strProdMedFormCode"/>
+      <index name="strPMFormCode_UNIQUE" unique="true" columns="strPMFormCode"/>
+      <index name="strPMFormName_UNIQUE" unique="true" columns="strPMFormName"/>
+    </table>
+    <table name="tblpmmanufacturer" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPMManuCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPMManuName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strPMManuDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strPMManuCode"/>
+      <exported-key name="ProdMed_ManuCode" table="tblprodmed" schema="" catalog="dbcpsystem" columns="strProdMedManuCode"/>
+      <index name="strPMManuCode_UNIQUE" unique="true" columns="strPMManuCode"/>
+      <index name="strPMManuName_UNIQUE" unique="true" columns="strPMManuName"/>
+    </table>
+    <table name="tblpmpackaging" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPMPackCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPMPackName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strPMPackDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strPMPackCode"/>
+      <exported-key name="FP_PackCode" table="tblformpack" schema="" catalog="dbcpsystem" columns="strFPPackCode"/>
+      <exported-key name="ProdMed_PackCode" table="tblprodmed" schema="" catalog="dbcpsystem" columns="strProdMedPackCode"/>
+      <index name="strPMPackCode_UNIQUE" unique="true" columns="strPMPackCode"/>
+      <index name="strPMPackName_UNIQUE" unique="true" columns="strPMPackName"/>
+    </table>
+    <table name="tblpmtheraclass" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPMTheraClassCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPMTheraClassName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strPMTheraClassDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strPMTheraClassCode"/>
+      <index name="strPMTheraClassCode_UNIQUE" unique="true" columns="strPMTheraClassCode"/>
+      <index name="strPMTheraClassName_UNIQUE" unique="true" columns="strPMTheraClassName"/>
+    </table>
+    <table name="tblprodgenassoc" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPGAProdCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPGAGenCode" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="strPGAProdCode"/>
+    </table>
+    <table name="tblprodmed" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strProdMedCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="intProdMedType" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="strProdMedTypeCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strProdMedManuCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strProdMedFormCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="decProdMedSize" sqlType="DECIMAL" precision="10" scale="0" nullable="false" jdbcType="3"/>
+      <column name="strProdMedDosCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strProdMedPackCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strProdMedDesc" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="strProdMedCode"/>
+      <foreign-key name="ProdMed_FormCode" columns="strProdMedFormCode" ref-table="tblpmform" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPMFormCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ProdMed_ManuCode" columns="strProdMedManuCode" ref-table="tblpmmanufacturer" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPMManuCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ProdMed_PackCode" columns="strProdMedPackCode" ref-table="tblpmpackaging" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPMPackCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ProdMed_ProdCode" columns="strProdMedCode" ref-table="tblproducts" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strProdCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ProdMed_TypeCode" columns="strProdMedTypeCode" ref-table="tblprodmedtype" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPMTypeCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ProdMed_UOMCode" columns="strProdMedDosCode" ref-table="tbluom" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strUOMCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="strProdMedCode_UNIQUE" unique="true" columns="strProdMedCode"/>
+      <index name="ProdMed_FormCode_idx" unique="false" columns="strProdMedFormCode"/>
+      <index name="ProdMed_ManuCode_idx" unique="false" columns="strProdMedManuCode"/>
+      <index name="ProdMed_PackCode_idx" unique="false" columns="strProdMedPackCode"/>
+      <index name="ProdMed_TypeCode" unique="false" columns="strProdMedTypeCode"/>
+      <index name="ProdMed_UOMCode_idx" unique="false" columns="strProdMedDosCode"/>
+    </table>
+    <table name="tblprodmedbranded" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPMBranCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPMBranName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strPMBranDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strPMBranCode"/>
+      <exported-key name="Type_BranCode" table="tblprodmedtype" schema="" catalog="dbcpsystem" columns="strPMTypeBranCode"/>
+      <index name="strPMBranCode_UNIQUE" unique="true" columns="strPMBranCode"/>
+      <index name="strPMBranName_UNIQUE" unique="true" columns="strPMBranName"/>
+    </table>
+    <table name="tblprodmedgeneric" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPMGenCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPMGenName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strPMGenDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strPMGenCode"/>
+      <exported-key name="Type_GenCode" table="tblprodmedtype" schema="" catalog="dbcpsystem" columns="strPMTypeGenCode"/>
+      <index name="strPMGenCode_UNIQUE" unique="true" columns="strPMGenCode"/>
+      <index name="strPMGenName_UNIQUE" unique="true" columns="strPMGenName"/>
+    </table>
+    <table name="tblprodmedtype" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPMTypeCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPMTypeBranCode" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="strPMTypeGenCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="strPMTypeCode"/>
+      <foreign-key name="Type_BranCode" columns="strPMTypeBranCode" ref-table="tblprodmedbranded" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPMBranCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Type_GenCode" columns="strPMTypeGenCode" ref-table="tblprodmedgeneric" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPMGenCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <exported-key name="ProdMed_TypeCode" table="tblprodmed" schema="" catalog="dbcpsystem" columns="strProdMedTypeCode"/>
+      <index name="strProdMedTypeCode_UNIQUE" unique="true" columns="strPMTypeCode"/>
+      <index name="TypeCodeName_UNIQUE" unique="true" columns="strPMTypeBranCode,strPMTypeGenCode"/>
+    </table>
+    <table name="tblprodnonmed" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strProdNMedCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strProdNMedName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strProdNMedCatCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="intProdNMedMeasType" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="strProdNMedDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="strProdNMedCode"/>
+      <foreign-key name="ProdNonMed_CatCode" columns="strProdNMedCatCode" ref-table="tblnmedcategory" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strNMedCatCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <exported-key name="Gene_ProdNonMedCode" table="tblnmedgeneral" schema="" catalog="dbcpsystem" columns="strNMGenCode"/>
+      <exported-key name="Stan_ProdNonMed" table="tblnmedstandard" schema="" catalog="dbcpsystem" columns="strNMStanCode"/>
+      <index name="strProdNMedCode_UNIQUE" unique="true" columns="strProdNMedCode"/>
+      <index name="strProdNMedName_UNIQUE" unique="true" columns="strProdNMedName"/>
+      <index name="ProdNonMed_CatCode_idx" unique="false" columns="strProdNMedCatCode"/>
+    </table>
+    <table name="tblprodprice" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strProdPriceCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="decProdPriceValue" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="decProdPricePerPiece" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="drmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="strProdPriceCode,decProdPriceValue,decProdPricePerPiece"/>
+      <foreign-key name="ProdPrice_ProdCode" columns="strProdPriceCode" ref-table="tblproducts" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strProdCode" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="tblprodtheraassoc" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPTAProdCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPTATheraCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="strPTAProdCode,strPTATheraCode"/>
+    </table>
+    <table name="tblproducts" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strProdCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strProdType" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="dtmLastUpdate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strProdCode"/>
+      <exported-key name="PaProd_Code" table="tblpackproducts" schema="" catalog="dbcpsystem" columns="strPackProdProdCode"/>
+      <exported-key name="ProdMed_ProdCode" table="tblprodmed" schema="" catalog="dbcpsystem" columns="strProdMedCode"/>
+      <exported-key name="ProdPrice_ProdCode" table="tblprodprice" schema="" catalog="dbcpsystem" columns="strProdPriceCode"/>
+      <exported-key name="PrProd_Code" table="tblpromprod" schema="" catalog="dbcpsystem" columns="strPPProdCode"/>
+      <index name="strProdCode_UNIQUE" unique="true" columns="strProdCode"/>
+    </table>
+    <table name="tblpromo" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strPromoCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPromoName" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strPromoDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="dblPromoPerc" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MA=="/>
+      <column name="decPromoAmt" sqlType="DECIMAL" precision="10" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="datPromoFrom" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="datPromoTo" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="strPromoCode"/>
+      <exported-key name="Promo_Code" table="tblpromprod" schema="" catalog="dbcpsystem" columns="StrPPPromCode"/>
+      <index name="strPromoCode_UNIQUE" unique="true" columns="strPromoCode"/>
+      <index name="strPromoName_UNIQUE" unique="true" columns="strPromoName"/>
+    </table>
+    <table name="tblpromprod" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="StrPPPromCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strPPProdCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="StrPPPromCode,strPPProdCode"/>
+      <foreign-key name="Promo_Code" columns="StrPPPromCode" ref-table="tblpromo" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strPromoCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <foreign-key name="PrProd_Code" columns="strPPProdCode" ref-table="tblproducts" ref-schema="" ref-catalog="dbcpsystem" ref-columns="strProdCode" update-rule="0" delete-rule="3" deferrability="2"/>
+      <index name="Prod_Code_idx" unique="false" columns="strPPProdCode"/>
+    </table>
+    <table name="tbluom" schema="" catalog="dbcpsystem" type="TABLE">
+      <column name="strUOMCode" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="strUOMName" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strUOMDesc" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="intStatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="strUOMCode"/>
+      <exported-key name="Stan_UOMCode" table="tblnmedstandard" schema="" catalog="dbcpsystem" columns="strNMStanUOMCode"/>
+      <exported-key name="ProdMed_UOMCode" table="tblprodmed" schema="" catalog="dbcpsystem" columns="strProdMedDosCode"/>
+      <index name="strUOMCode_UNIQUE" unique="true" columns="strUOMCode"/>
+      <index name="strUOMName_UNIQUE" unique="true" columns="strUOMName"/>
+    </table>
+  </data-source>
+</component>
