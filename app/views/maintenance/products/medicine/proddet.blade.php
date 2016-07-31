@@ -255,7 +255,7 @@
                     
                     <div class="col-sm-4">
                       <select class = "form-control" id="uom" name="uom" required>
-                        <option disabled selected value> -- SELECT DOSAGE -- </option>
+                        <option disabled selected value> -- SELECT UOM -- </option>
                         <?php
                           $result = DB::select('SELECT strUOMName,strUOMCode FROM tblUOM WHERE intStatus = 1');
 
@@ -278,7 +278,7 @@
                     
                     <div class="col-sm-2">
                       <select class = "form-control" id="dosuom" name="dosuom" required>
-                        <option disabled selected value> -- SELECT DOSAGE -- </option>
+                        <option disabled selected value> -- SELECT UOM -- </option>
                         <?php
                           $result = DB::select('SELECT strUOMName,strUOMCode FROM tblUOM WHERE intStatus = 1');
 
@@ -301,7 +301,7 @@
                     
                     <div class="col-sm-2">
                       <select class = "form-control" id="dosperuom" name="dosperuom" required>
-                        <option disabled selected value> -- SELECT DOSAGE -- </option>
+                        <option disabled selected value> -- SELECT UOM -- </option>
                         <?php
                           $result = DB::select('SELECT strUOMName,strUOMCode FROM tblUOM WHERE intStatus = 1');
 
@@ -414,7 +414,9 @@
                           <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Form</th>
         									
                           <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Size</th>
-        									
+
+                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Dosage</th>
+
                           <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Packaging</th>
         									
                           <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;"><p>&#x20B1;/Pc</p></th>
@@ -451,6 +453,14 @@
                                                   f.strPMFormName,
                                                   m.decProdMedSize,
                                                   u.strUOMName,
+                                                  m.decProdMedDosSize,
+                                                  (
+                                                    SELECT strUOMName FROM tblUOM WHERE strUOMCode = m.strProdMedDosUOMCode
+                                                    ) as 'udUOM',
+                                                  m.decProdMedDosPerSize,
+                                                  (
+                                                    SELECT strUOMName FROM tblUOM WHERE strUOMCode = m.strProdMedDosPerUOMCode
+                                                    ) as 'udpUOM',
                                                   pk.strPMPackName,
                                                   pr.decProdPricePerPiece,  
                                                   pr.intQtyPerPackage,
@@ -462,7 +472,9 @@
                                                   m.strProdMedManuCode,
                                                   m.strProdMedFormCode,
                                                   m.strProdMedUOMCode,
-                                                  m.strProdMedPackCode
+                                                  m.strProdMedPackCode,
+                                                  m.strProdMedDosUOMCode,
+                                                  m.strProdMedDosPerUOMCode
 
                                                 FROM tblProdMed m
                                                 LEFT JOIN tblPMTheraClass t
@@ -507,6 +519,7 @@
                             echo '<td>'.$data->strPMManuName.'</td>';
                             echo '<td>'.$data->strPMFormName.'</td>';
                             echo '<td>'.$data->decProdMedSize.' '.$data->strUOMName.'</td>';
+                            echo '<td>'.$data->decProdMedDosSize.' '.$data->udUOM.'/'.$data->decProdMedDosPerSize.' '.$data->udpUOM.'</td>';
                             echo '<td>'.$data->strPMPackName.'</td>';
                             echo '<td>'.$data->decProdPricePerPiece.'</td>';
                             echo '<td>'.$data->decPricePerPackage.'</td>';
@@ -524,6 +537,10 @@
                                                                                                                                                                \''.$data->strProdMedFormCode.'\',
                                                                                                                                                                \''.$data->decProdMedSize.'\',
                                                                                                                                                                \''.$data->strProdMedUOMCode.'\',
+                                                                                                                                                               \''.$data->decProdMedDosSize.'\',
+                                                                                                                                                               \''.$data->strProdMedDosUOMCode.'\',
+                                                                                                                                                               \''.$data->decProdMedDosPerSize.'\',
+                                                                                                                                                               \''.$data->strProdMedDosPerUOMCode.'\',
                                                                                                                                                                \''.$data->strProdMedPackCode.'\',
                                                                                                                                                                \''.$conv_desc.'\',
                                                                                                                                                                \''.$data->decProdPricePerPiece.'\',
@@ -667,7 +684,7 @@
       }
     }
 
-    function setFormData(code,type,bname,gname,tclass,manuf,form,size,dosage,pack,desc,prpc,prpck,pcpck){
+    function setFormData(code,type,bname,gname,tclass,manuf,form,size,uom,dossize,dosuom,dospsize,dospuom,pack,desc,prpc,prpck,pcpck){
       var gennames = gname.split(";");
       document.getElementById('hidden_gen').value = gname;
       for(var i=0; i < gennames.length; i++){
@@ -680,7 +697,11 @@
       document.getElementById('manu').value = manuf;
       document.getElementById('form').value = form;
       document.getElementById('size').value = size;
-      document.getElementById('uom').value = dosage;
+      document.getElementById('uom').value = uom;
+      document.getElementById('dossize').value = dossize;
+      document.getElementById('dosuom').value = dosuom;
+      document.getElementById('dospersize').value = dospsize;
+      document.getElementById('dosperuom').value = dospuom;
       document.getElementById('pack').value = pack;
       document.getElementById('desc').value = desc.replace("&","'");
       document.getElementById('prpc').value = prpc;

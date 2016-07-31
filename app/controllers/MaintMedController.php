@@ -405,7 +405,7 @@ class MaintMedController extends \BaseController {
 
                     //insert into tblProdMed
                     DB::insert(
-                        'INSERT INTO tblProdMed VALUES(?,?,?,?,?,?,?,?,?,?)',
+                        'INSERT INTO tblProdMed VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                         [
                             $prodcode,
                             Input::get('medtype'),
@@ -415,6 +415,10 @@ class MaintMedController extends \BaseController {
                             Input::get('form'),
                             Input::get('size'),
                             Input::get('uom'),
+                            Input::get('dossize'),
+                            Input::get('dosuom'),
+                            Input::get('dospersize'),
+                            Input::get('dosperuom'),
                             Input::get('pack'),
                             Input::get('desc')
                         ]
@@ -463,7 +467,7 @@ class MaintMedController extends \BaseController {
                 //update tblProdMed
                 DB::update(
                     'UPDATE tblProdMed SET intProdMedType = ?, strProdMedTheraCode = ?, strProdMedBranCode = ?, strProdMedManuCode = ?, 
-                        strProdMedFormCode = ?, decProdMedSize = ?, strProdMedDosCode = ?, strProdMedPackCode = ?, strProdMedDesc = ?
+                        strProdMedFormCode = ?, decProdMedSize = ?, strProdMedUOMCode = ?, strProdMedPackCode = ?, strProdMedDesc = ?
                      WHERE strProdMedCode = ?',
                     [
                         Input::get('medtype'),
@@ -522,7 +526,8 @@ class MaintMedController extends \BaseController {
                 //update tblProdMed
                 DB::update(
                     'UPDATE tblProdMed SET intProdMedType = ?, strProdMedTheraCode = ?, strProdMedBranCode = ?, strProdMedManuCode = ?, 
-                        strProdMedFormCode = ?, decProdMedSize = ?, strProdMedDosCode = ?, strProdMedPackCode = ?, strProdMedDesc = ?
+                        strProdMedFormCode = ?, decProdMedSize = ?, strProdMedUOMCode = ?, decProdMedDosSize = ?, strProdMedDosUOMCode = ?, 
+                        decProdMedDosPerSize = ?, strProdMedDosPerUOMCode = ?, strProdMedPackCode = ?, strProdMedDesc = ?
                      WHERE strProdMedCode = ?',
                     [
                         Input::get('medtype'),
@@ -532,6 +537,10 @@ class MaintMedController extends \BaseController {
                         Input::get('form'),
                         Input::get('size'),
                         Input::get('uom'),
+                        Input::get('dossize'),
+                        Input::get('dosuom'),
+                        Input::get('dospersize'),
+                        Input::get('dosperuom'),
                         Input::get('pack'),
                         Input::get('desc'),
                         $prodcode
@@ -586,7 +595,7 @@ class MaintMedController extends \BaseController {
                     'tblProdMed.strProdMedManuCode' => $manu,
                     'tblProdMed.strProdMedFormCode' => $form,
                     'tblProdMed.decProdMedSize' => floatval($size),
-                    'tblProdMed.strProdMedDosCode' => $uom,
+                    'tblProdMed.strProdMedUOMCode' => $uom,
                     'tblProducts.intStatus' => 1
                 ];
         $prodcode = DB::table('tblProdMed')
@@ -628,7 +637,7 @@ class MaintMedController extends \BaseController {
                     'tblProdMed.strProdMedManuCode' => $manu,
                     'tblProdMed.strProdMedFormCode' => $form,
                     'tblProdMed.decProdMedSize' => floatval($size),
-                    'tblProdMed.strProdMedDosCode' => $uom,
+                    'tblProdMed.strProdMedUOMCode' => $uom,
                     'tblProducts.intStatus' => 0
                 ];
         $prodcode = DB::table('tblProdMed')
