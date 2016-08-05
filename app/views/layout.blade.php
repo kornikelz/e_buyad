@@ -112,7 +112,7 @@
                       <a href="{{URL::to('/maintenance/products/nonmed')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbspNon-medicine</a>
                       <a href="{{URL::to('/maintenance/fpu/forms')}}" class="list-group-item" style="font-size:12px">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Forms, Packaging and UOM</a>
                     </div>
-                    <a href="{{URL::to('/maintenance/employee')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-briefcase"></i>Employee</a>
+                    <a href="{{URL::to('/maintenance/employee')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-briefcase"></i>Company</a>
                     <a href="{{URL::to('maintenance/ppd/discount')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-tags"></i>Discount, Promos and Packages</a>
                   </div>
                 </li>
