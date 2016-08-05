@@ -24,7 +24,7 @@
                     <hr>
                     </h5>
                   </center>
-
+                  
                     <div class = "row">
                       <div class = "col-md-6">
                         <button id="btncash" type="button" class="btn btn-primary btn-block" href="#cash" data-toggle="collapse" onclick="document.getElementById('prods').className= 'collapse'">CASH</button>

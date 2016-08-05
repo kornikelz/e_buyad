@@ -70,7 +70,7 @@
                   <input type="hidden" id="prodcode" name="prodcode">
 
                   <div class="form-group"><!-- Medicine type choices -->
-                    <label class="control-label col-sm-3">Medicine Type:</label>
+                    <label class="control-label col-sm-3"><span style="color:red">*</span>Medicine Type:</label>
 
                     <div class="col-sm-9">
                       <select id = "medtype" name="medtype" class = "form-control" onchange="hsBranded()" required>
@@ -83,7 +83,7 @@
                   
                   <div id = "branded"><!-- Brand Name -->
                     <div class="form-group">
-                      <label class="control-label col-sm-3">Brand Name:</label>
+                      <label class="control-label col-sm-3"><span style="color:red">*</span>Brand Name:</label>
 
                       <div class="col-sm-9">
                         <select id = "brand" name="brand" class = "form-control" required>
@@ -101,7 +101,7 @@
                   </div>
                                        
                   <div class="form-group"><!-- Generic Name -->
-                    <label class="control-label col-sm-3">Generic Name:</label>
+                    <label class="control-label col-sm-3"><span style="color:red">*</span>Generic Name:</label>
                     
                     <div class= "col-sm-7">
                       <input type="text" class="form-control" value="" id="gennames" name="gennames" required="">
@@ -195,7 +195,7 @@
                   </div>
 
                   <div class="form-group"><!-- Thera Class -->
-                    <label class="control-label col-sm-3">Therapeutic Class:</label>
+                    <label class="control-label col-sm-3"><span style="color:red">*</span>Therapeutic Class:</label>
                     <div class="col-sm-9">
                       <select class = "form-control" id="thera" name="thera" required>
                         <option disabled selected value> -- SELECT THERAPEUTIC CLASS -- </option>
@@ -228,7 +228,7 @@
                   </div>
 
                   <div class="form-group"><!-- Form -->
-                    <label class="control-label col-sm-3">Form:</label>
+                    <label class="control-label col-sm-3"><span style="color:red">*</span>Form:</label>
                     
                     <div class= "col-sm-9">
                       <select class = "form-control" id="form" name="form"  required>
@@ -245,7 +245,7 @@
                   </div>
 
                   <div id="sizediv" class="form-group has-feedback"><!-- Size -->
-                    <label class="control-label col-sm-3">Size:</label>
+                    <label class="control-label col-sm-3"><span style="color:red">*</span>Size:</label>
                      
                     <div class="col-sm-5">
                       <input type="text" id="size" class="form-control" name="size" placeholder="0.00" maxlength="10" required>
@@ -268,7 +268,7 @@
                   </div>
 
                   <div id="dosdiv" class="form-group has-feedback"><!-- Dosage -->
-                    <label class="control-label col-sm-3">Dosage:</label>
+                    <label class="control-label col-sm-3"><span style="color:red">*</span>Dosage:</label>
                      
                     <div class="col-sm-2">
                       <input type="text" id="dossize" class="form-control" name="dossize" placeholder="0.00" maxlength="10" required>
@@ -289,8 +289,10 @@
                       </select>
                     </div>
 
-                    <div class="col-sm-1">
-                      <label class="control-label"> <h5> / </h5> </label>
+                    <div class="col-sm-1" style="bottom:14px">
+                      <center>  
+                      <label class="control-label" style="font-size:2.5em"> <p> / </p> </label>
+                    </center>
                     </div>
 
                     <div class="col-sm-2">
@@ -314,7 +316,7 @@
                   </div>
 
                   <div class="form-group"><!-- Packaging -->
-                    <label class="control-label col-sm-3">Packaging:</label>
+                    <label class="control-label col-sm-3"><span style="color:red">*</span>Packaging:</label>
                     
                     <div class="col-sm-9">
                       <select class = "form-control"id="pack" name="pack" required>
@@ -343,7 +345,7 @@
                   <br><br>
                   
                   <div id="prpcdiv" class="form-group has-feedback"><!-- Price per piece -->
-                    <label class="control-label col-sm-3" >Price per piece:</label>
+                    <label class="control-label col-sm-3" ><span style="color:red">*</span>Price per piece:</label>
                       
                     <div class="col-sm-9">
                         <input type="text" id="prpc" class="form-control" placeholder="0.00" name="prpc">
@@ -353,7 +355,7 @@
                   </div>
 
                   <div id="prpckdiv" class="form-group has-feedback"><!-- Price per package -->
-                    <label class="control-label col-sm-3">Price per Package:</label>
+                    <label class="control-label col-sm-3"><span style="color:red">*</span>Price per Package:</label>
                     
                     <div class="col-sm-4">
                       <div class = "input-group">
@@ -362,7 +364,7 @@
                       </div>
                     </div>
 
-                    <label class="control-label col-sm-1">Per:</label>
+                    <label class="control-label col-sm-1"><span style="color:red">*</span>Per:</label>
 
                     <div class="col-sm-3">
                       <input type="number" placeholder="0" id="pcpck" class="form-control" name="pcpck">
@@ -371,11 +373,12 @@
                       </p>
                     </div>
 
-                    <label class="control-label col-sm-1">Pieces</label>
+                    <label class="control-label col-sm-1"><span style="color:red">*</span>Pieces</label>
+                    
                   </div>
 
-                  <div class="form-group"><!-- Form Buttons -->
-                    <div class="col-md-offset-3 col-md-9">
+                  <div class="form-group"><!-- Form Buttons --><br><br>
+                    <div class="col-md-offset-9 col-md-9">
                       <button id="btnsubmit" type="submit" class="btn btn-info" data-toggle="modal" data-target="#Submit">Submit</button>
                       <!-- <button class="btn btn-info" type="button" onclick="window.open('localhost:8000','_blank');window.location.href='/';">Cancel</button> -->
                       <button class="btn btn-info" type="cancel" href="#mem_form" data-toggle="collapse" onclick="clearForm();">Cancel</button>
@@ -389,6 +392,11 @@
           <!-- datatables -->
           <div class = "row">
             <div class="col-md-12">
+              <!--<hr style="border-width:1.1em">
+              <center>
+                <h5><span><i class="glyphicon glyphicon-list"></i></span> &nbspMEDICINE LIST</h5>
+              </center>
+              <hr>-->
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <h3 class="panel-title"> MEDICINE LIST </h3>
@@ -419,11 +427,11 @@
 
                           <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Packaging</th>
         									
-                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;"><p>&#x20B1;/Pc</p></th>
+                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;"><p>₱/Pc</p></th>
         									
-                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;"><p>&#x20B1;/Pack</p></th>
+                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;"><p>₱/Pack</p></th>
         				
-                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Desc</th>
+                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Description</th>
 
                           <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Options</th>
         								</tr>

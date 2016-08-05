@@ -113,8 +113,8 @@
         <div class="input-group" style="width: 800px;">
             <input type="hidden" name="retid" value="{{$retid}}">
             <div class="form-group">
-            <label class="control-label col-md-2">
-              Transaction Id:
+            <label class="control-label col-md-2" style="padding-right:0px">
+              Transaction ID:
             </label>
             <div class="col-md-5">
               <input id="transid" type="text"  name="transid" class="form-control" readonly>

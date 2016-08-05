@@ -157,7 +157,7 @@
                                     $data->strProdMedCode.'\',\''.
                                     $data->strPMBranName.' '.$data->GenNames.'\','.
                                     $data->decProdPricePerPiece
-                                  .')">></button></td>';
+                                  .')">+</button></td>';
                             echo '<td>'.$data->strPMTheraClassName.'</td>';
                             echo '<td>'.$data->strPMManuName.'</td>';
                             echo '<td>'.$data->strPMFormName.'</td>';
@@ -240,7 +240,7 @@
                                     $data->strProdNMedCode.'\',\''.
                                     $data->strProdNMedName.'\','.
                                     $data->decProdPricePerPiece
-                                  .')"></button></td>';
+                                  .')">+</button></td>';
                             echo '<td>'.$data->strNMedCatName.'</td>';
                             echo '</tr>';
                         }

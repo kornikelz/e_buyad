@@ -45,7 +45,7 @@
                   <input type="hidden" id="code" name="code">
                   
                   <div id="namediv" class="form-group has-feedback">
-                    <label class = "col-md-2 control-label">Generic Name</label>
+                    <label class = "col-md-2 control-label"><span style="color:red">*</span>Generic Name</label>
                     
                     <div class="col-md-10">
                       <input type="text" placeholder="Generic Name" id="name" class="form-control" name="name" maxlength="100" required>

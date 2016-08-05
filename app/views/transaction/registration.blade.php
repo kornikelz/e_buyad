@@ -24,12 +24,21 @@
       <hr>
       </h5></center>
 
-      <ul class="nav nav-tabs">
+      <div class="btn-group btn-group-justified">
+        <a href="#details" data-toggle="tab"><button style="width:33%; height:150%; color:#434A54" id="detailsl" class="active">Member Details</button></a>
+        <a href="#contact" data-toggle="tab"><button style="width:33%; height:150%; color:#434A54" id="contactl" class="hidden">Contact Details</button></a>
+        <a href="#capture" data-toggle="tab"><button style="width:33%; height:150%; color:#434A54" id="capturel" class="hidden">Capture Image</button></a>
+        <a href="#confirm" data-toggle="tab"><button style="width:33%; height:150%; color:#434A54" id="confirml" class="hidden">Confirmation</button></a>
+      </div>
+
+      <hr>
+
+      <!--<ul class="nav nav-tabs">
         <li id="detailsl" class = "active"><a id="detailsla" data-toggle="tab" href="#details">Member Details</a></li>
         <li id="contactl" class = "hidden"><a id="detailsla" data-toggle="tab" href="#contact">Contact Details</a></li>
         <li id="capturel" class = "hidden"><a data-toggle="tab" href="#capture">Capture Image</a></li>
         <li id="confirml" class = "hidden"><a data-toggle="tab" href="#confirm">Confirmation</a></li>
-      </ul>
+      </ul>-->
 
       <!-- forms -->
       <div class="tab-content">
@@ -42,7 +51,7 @@
             </div>
 
             <div class="form-group">  
-              <label class = "col-md-3 control-label">First name</label>
+              <label class = "col-md-3 control-label"><span style="color:red" >*</span>First name</label>
               <div id="fnamef" class="col-md-7">
                 <input type="text" placeholder="First Name" id="fname" class="form-control" name="fname" maxlength="50">
                 <span id="fnamesp" class="1"></span>
@@ -58,7 +67,7 @@
             </div>
 
             <div class="form-group">
-              <label class = "col-md-3 control-label">Last Name</label>
+              <label class = "col-md-3 control-label"><span style="color:red" >*</span>Last Name</label>
               <div id="lnamef"  class="col-md-7">
                 <input type="text" placeholder="Last Name" id="lname" class="form-control" name="lname" maxlength="50">
                 <span id="lnamesp" class="1"></span>
@@ -66,7 +75,7 @@
             </div>
 
             <div class="form-group">
-              <label class = "col-md-3 control-label">Birthday</label>
+              <label class = "col-md-3 control-label"><span style="color:red" >*</span>Birthday</label>
               <div id="bdayf" class="col-md-7">
                 <?php
                   echo '<input type="date" id="bday" class="form-control" name="bday" min="1900-01-01" max="'.date('Y-m-d').'">';
@@ -91,13 +100,16 @@
             </div>
 
             <div class="form-group">
-              <label class = "col-md-3 control-label">Address</label>
+              <label class = "col-md-3 control-label"><span style="color:red" >*</span>Address</label>
               <div id="haddf" class="col-md-7">
                 <input type="text" placeholder="House/Lot No, Street Name, Building Name, Brgy No, Subdivision Name, City" id="hadd" class="form-control" name="hadd" maxlength="200">
                 <span id="haddsp" class="1"></span>
               </div>
             </div>
-
+            
+            <div class="form-group">
+              <label class = "col-md-5 control-label">NOTE: (<span style="color:red" >*</span>) ARE REQUIRED FIELD</label>
+            </div>
             <br><br>
             
             <div class="form-group">
@@ -149,6 +161,10 @@
                 <input type="text" placeholder="email@site.com" id="email" class="form-control" name="email">
                 <span id="emailsp" class=""></span>
               </div>
+            </div>
+            
+            <div class="form-group">
+              <label class = "col-md-5 control-label">NOTE: ATLEAST 1 CONTACT INFORMATION. (OPTIONAL)</label>
             </div>
 
             <br><br>

@@ -75,7 +75,7 @@
                                     <div class="form-group  has-feedback">
                                         <label class = "col-md-2 control-label">Telephone Number</label>
                                         <div class="col-md-10">
-                                            <input type="text"  placeholder="###-##-##" id="telnum" class="form-control" name="telnum"   pattern="\d{7}" onkeypress="return validateNumbers(event)" required">
+                                            <input type="text"  placeholder="###-##-##" id="telnum" class="form-control" name="telnum"   pattern="\d{7}" onkeypress="return validateNumbers(event)" required>
                                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                                                                         <p class="help-block with-errors"></p>
                                         </div>
@@ -83,7 +83,7 @@
                                     <div class="form-group">
                                         <label class = "col-md-2 control-label">Fax Number</label>
                                         <div class="col-md-10">
-                                            <input type="text" placeholder="Fax Number" id="faxnum" class="form-control" name="faxnum" onkeypress="return validateNumbers(event)>
+                                            <input type="text" placeholder="Fax Number" id="faxnum" class="form-control" name="faxnum" onkeypress="return validateNumbers(event)">
                                         </div>
                                     </div>
                                     <div class="form-group">

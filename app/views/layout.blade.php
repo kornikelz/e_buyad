@@ -7,19 +7,27 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- site css -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+    
+
+   <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+
     {{HTML::style('dist/css/site.min.css')}}
 
     {{HTML::script('js/jquery.min.js')}}
-
+    
     @yield('other-scripts')
-		
-    <style type="text/css">
-      body{
+
+    <style>
+      body {      
+        background-image: url('/images/small-logo2.png');
+        min-height: 500px;
         background-attachment: fixed;
-        background-image: {{URL('images/small-logo2.png')}};
-        background-repeat: no-repeat;     
-      }
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
     </style>
+
     <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
@@ -39,13 +47,13 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand"><strong>e-BUYad</strong></a>
+            <a class="navbar-brand">&nbsp<img style="padding-bottom:10px;" src="{{('/images/nav-logo.png')}}"/>&nbsp <strong style="font-size:1.5em">e-BUYad</strong></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
+          <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse" style="padding-bottom:10px;">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="{{URL::to('/')}}"><b>SIGN OUT</b></a></li>
+                <li class="active"><a href="{{URL::to('/')}}"><b>SIGN OUT</b></a></li>
             </ul>
 
           </div><!-- /.navbar-collapse -->
@@ -55,7 +63,7 @@
     <div class="container-fluid">
     <!--documents-->
         <div class="row row-offcanvas row-offcanvas-left">
-          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
+          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation" style="margin-left:10px">
             <ul class="list-group panel">
                 <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>NAVIGATION</b></li>
 
@@ -115,6 +123,16 @@
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a> Hide Navigation </h3>
+
+                <script> 
+                $(document).ready(function(){
+                  $('[data-toggle=offcanvas]').click(function () {
+                    $('.row-offcanvas').toggleClass('active');
+                    $(this).toggleClass('fa-angle-double-left fa-angle-double-right');
+                  });
+                })
+              </script>
+
               </div>
               @yield('content')
             </div>

@@ -48,7 +48,7 @@
                   <input type="hidden" name="code" id="code">
                   
                   <div id="theradiv" class="form-group has-feedback">
-                    <label class = "col-md-2 control-label">Therepeutic Class</label>
+                    <label class = "col-md-2 control-label"><span style="color:red">*</span>Therepeutic Class</label>
                     
                     <div class="col-md-10">
                       <input type="text" placeholder="Therapeutic class" id="theraclass" class="form-control" name="theraclass" maxlength="100" required="">

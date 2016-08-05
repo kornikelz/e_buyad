@@ -47,8 +47,8 @@
                   <input type="hidden" name="code" id="code">
 
                   <div id="namediv" class="form-group has-feedback">
-                    <label class = "col-md-2 control-label">Manufacturer Name</label>
-                    <div class="col-md-10">
+                    <label class = "col-md-3 control-label"><span style="color:red">*</span>Manufacturer Name</label>
+                    <div class="col-md-9">
                       <input type="text" placeholder="Manufacturer Name" id="name" class="form-control" maxlength="100" name="name" required="">
                       <span id="namespan" class="glyphicon form-control-feedback" aria-hidden="true"></span>
                       <p id="namep" class="help-block with-errors"></p>
@@ -56,8 +56,8 @@
                   </div>
                  
                   <div class="form-group">
-                    <label class="control-label col-sm-2">Description:</label>
-                    <div class="col-sm-10">
+                    <label class="control-label col-sm-3">Description:</label>
+                    <div class="col-sm-9">
                       <textarea class="form-control" rows="3" placeholder="Description" name="desc" id="desc"></textarea>
                     </div>
                   </div>
