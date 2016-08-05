@@ -39,8 +39,8 @@
                   <center><h5 class="content-row-title" style="font-size:25px">Discount Maintenance<hr></h5></center>
 
                   <div class="btn-group btn-group-justified">
-                            <a shref="{{URL::to('/maintenance/ppd/packages')}}" class="btn btn-primary hidden ">Packages</a>
-                            <a hidden href="#" class="btn btn-primary hidden">Promos</a>
+                            <a href="{{URL::to('/maintenance/ppd/packages')}}" class="btn btn-primary">Packages</a>
+                            <a hidden href="#" class="btn btn-primary">Promos</a>
                             <a href="#" class="btn btn-info">Discounts</a>
                   </div>
                         <br> <br><br>
@@ -56,7 +56,7 @@
                       <div class="col-md-8">
                           <div id="disc_form" class="collapse">
 
-                            <form id="discform" class="form-horizontal" role="form" method="post">
+                            <form id="discform" class="form-horizontal" role="form" method="post" action="">
                                 <input type="hidden" name="code" id="code">
                               <div id="namediv" class="form-group has-feedback">
                                 <label class="control-label col-sm-2">Discount Name</label>

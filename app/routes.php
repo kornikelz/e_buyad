@@ -115,6 +115,7 @@ Route::post('/maintenance/ppd/discount/update-discount','MaintPPDController@upda
 Route::get('/maintenance/ppd/packages','MaintPPDController@showPackages');
 Route::get('/maintenance/ppd/packages/get-participating-products','MaintPPDController@getParticipatingProducts');
 Route::get('/maintenance/ppd/packages/get-search-names','MaintPPDController@getNames');
+Route::post('/maintenance/ppd/packages/add-package','MaintPPDController@addPackage');
 
 
 Route::get('/transaction/registration','TransactionController@showRegistration');

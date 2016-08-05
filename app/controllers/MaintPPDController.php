@@ -133,4 +133,39 @@ class MaintPPDController extends \BaseController {
                         );
         return Response::json($res);
     }
+
+    public function addPackage(){
+        try{
+            //insert package info
+
+            $packcode = (new CodeController())->getPackageCode();
+            
+            DB::insert(
+                'INSERT INTO tblPackages VALUES(?,?,?,?,?,now(),1)',
+                [
+                    $packcode,
+                    Input::get('name'),
+                    Input::get('start'),
+                    Input::get('end'),
+                    Input::get('pkgprice')
+                ]);
+
+            $prods = explode(";",Input::get('packprodcode'));
+            $qtys = explode(";",Input::get('packprodqty'));
+            $i = 0;
+
+            foreach($prods as $prod){
+                DB::insert('INSERT INTO tblPackProducts VALUES(?,?,?)',
+                    [
+                        $packcode,
+                        $prod,
+                        $qtys[$i]
+                    ]);
+                $i++;
+            }   
+
+            return Redirect::to('/maintenance/ppd/packages');
+        }catch(PDOException $ex){
+        }
+    }
 }

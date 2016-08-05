@@ -225,6 +225,18 @@ class CodeController extends BaseController
 
         return $this->showCode($forCode);
     }
+
+    public function getPackageCode(){
+        $strCode = $this->getLastCode('tblPackages', 'strPackCode');
+        if($strCode == null || $strCode == "") {
+            $forCode = "PKG00000";
+        }
+        else {
+            $forCode = $strCode["0"]->strPackCode;
+        }
+
+        return $this->showCode($forCode);
+    }
 }
 
 ?>

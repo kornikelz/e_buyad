@@ -62,12 +62,11 @@ class MaintEmpController extends \BaseController {
 
     public function addJob(){
         DB::insert(
-            'INSERT INTO tblEmpJobDesc VALUES (?,?,?,?,now(),1)',
+            'INSERT INTO tblEmpJobDesc VALUES (?,?,?,0,now(),1)',
             [
                 (new CodeController())->getJobCode(),
                 Input::get('name'),
-                Input::get('description'),
-                Input::get('level')
+                Input::get('description')
             ]
             );
 
@@ -76,11 +75,10 @@ class MaintEmpController extends \BaseController {
 
     public function updateJob(){
         DB::update(
-            'UPDATE tblEmpJobDesc SET strEJName = ?, strEJDescription = ?, intUserLevel = ?, dtmLastUpdate = now() WHERE strEJCode = ?',
+            'UPDATE tblEmpJobDesc SET strEJName = ?, strEJDescription = ?, dtmLastUpdate = now() WHERE strEJCode = ?',
             [
                 Input::get('name'),
                 Input::get('description'),
-                Input::get('level'),
                 Input::get('code')
             ]
         );

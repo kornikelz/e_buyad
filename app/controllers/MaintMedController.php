@@ -396,10 +396,11 @@ class MaintMedController extends \BaseController {
 
                     //insert into tblProducts
                     DB::insert(
-                        'INSERT INTO tblProducts VALUES(?,?,now(),1)',
+                        'INSERT INTO tblProducts VALUES(?,?,?,now(),1)',
                         [
                             $prodcode,
                             0,
+                            Input::get('stocks')
                         ]
                     );
 
@@ -520,7 +521,11 @@ class MaintMedController extends \BaseController {
             try{
                 //update tblProducts
                 DB::update(
-                    'UPDATE tblProducts SET dtmLastUpdate = now()'
+                    'UPDATE tblProducts SET intStocks = ?, dtmLastUpdate = now() WHERE strProdCode = ?',
+                    [
+                        Input::get('stocks'),
+                        $prodcode
+                    ]
                     );
 
                 //update tblProdMed

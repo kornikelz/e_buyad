@@ -60,7 +60,10 @@
                       <div class="col-md-offset-1 col-md-10">
                           <div id="mem_form" class="collapse">
 
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" method="post" action="{{URL::to('/maintenance/ppd/packages/add-package')}}">
+                              <input type="hidden" id="packprodcode" name="packprodcode">
+                              <input type="hidden" id="packprodqty" name="packprodqty">
+
                               <div class="form-group">
                                 <label class="control-label col-sm-3">Package Name</label>
                                 <div class="col-sm-9">
@@ -192,7 +195,7 @@
                                                                 LEFT JOIN tblpmform f
                                                                   ON m.strProdMedFormCode = f.strPMFormCode
                                                                 LEFT JOIN tbluom u 
-                                                                  ON m.strProdMedDosCode = u.strUOMCode
+                                                                  ON m.strProdMedUOMCode = u.strUOMCode
                                                                 LEFT JOIN tblpmpackaging pk
                                                                   ON m.strProdMedPackCode = pk.strPMPackCode
                                                                   
@@ -258,6 +261,7 @@
                                                 <th>Products</th>
                                                 <th>Price</th>
                                                 <th>Quantity</th>
+                                                <th>ProdCode</th>
                                               </tr>
                                             </thead>
                                             <tbody>
@@ -279,14 +283,14 @@
                               <div class="form-group">
                                 <label class="control-label col-md-offset-1 col-md-3">Package Price</label>
                                 <div class="col-md-8">
-                                  <input type="number" class="form-control" id="packageprice" required="">
+                                  <input type="number" class="form-control" id="pkgprice" name="pkgprice" required="">
                                 </div>
                               </div>
 
                                 <br><br><br>
                               <div class="form-group">
                                 <div class="col-md-offset-3 col-md-10">
-                                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Submit">Submit</button>
+                                  <button type="submit" class="btn btn-info"  onclick="getAddedProducts()">Submit</button>
                                   <button class="btn btn-info" type="cancel" href="#" data-toggle="collapse">Cancel</button>
                               </div>
                             </div>
@@ -337,9 +341,7 @@
                     </div>
 					          <!-- datatables -->
                     <div class = "row">
-                      <div class="col-md-1">
-                      </div>
-                      <div class="col-md-10" style="overflow-x: auto;">
+                      <div class="col-md-12" style="overflow-x: auto;">
                         <div class="panel panel-info">
                           <div class="panel-heading">
                             <h3 class="panel-title"> Package Details </h3>
@@ -353,6 +355,7 @@
                                       <th colspan = "1"></th>
                                       <th colspan = "2">PACKAGE</th>
                                       <th colspan = "1"></th>
+                                      <th colspan = "1"></th>
                                   </tr>
                                   <tr role="row">
                                     <th>Package Code</th>
@@ -362,6 +365,7 @@
                                     <th>Participating Products</th>
                                     <th>Total Price</th>
                                     <th>Package Price</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                   								</tr>
                   							</thead>
@@ -403,6 +407,11 @@
                                                                             echo '<td><a href="#View" class="" data-toggle="modal" data-target="" onclick="getProducts(\''.$data->strPackCode.'\');">View Details</a></td>';
                                                                             echo '<td>'.$data->TotalPrice.'</td>';
                                                                             echo '<td>'.$data->decPackPrice.'</td>';
+                                                                            if(date('Y-m-d') > $data->datPackTo){
+                                                                              echo '<td>EXPIRED</td>';
+                                                                            }else{
+                                                                              echo '<td>ACTIVE</td>';
+                                                                            }
                                                                             echo '
 
                                                                                 <td align="center">
@@ -440,6 +449,7 @@
                                             <th>Product List</th>
                                             <th>Price</th>
                                             <th>Quantity</th>
+                                            <th>ProdCode</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -502,7 +512,8 @@
           
           document.getElementById('us_name').value,
           document.getElementById('us_price').value,
-          document.getElementById('us_qty').value
+          document.getElementById('us_qty').value,
+          document.getElementById('us_code').value
       ] ).draw();
 
     document.getElementById('packprods').value = document.getElementById('packprods').value + document.getElementById('us_code').value + ";";
@@ -567,7 +578,13 @@
   } );
 
   $('#part').dataTable( {
-    "pageLength": 5
+    "pageLength": 5,
+    "columnDefs": [
+            {
+                "targets": [ 4 ],
+                "visible": false
+            }
+        ]
   } );
 
   $("#type").on('change', function(){
@@ -696,5 +713,27 @@
             }
         });
     }
+</script>
+<script type="text/javascript">
+  function getAddedProducts(){
+    //alert(document.getElementById('part').rows[2].cells[3].innerHTML);
+    var data = $("#part").DataTable().rows().data();
+
+    var prodcode = document.getElementById('packprodcode');
+    var prodqty = document.getElementById('packprodqty');
+
+    prodcode.value = "";
+    prodqty.value = "";
+
+    for(var i = 0; i < data.length; i++){
+      prodcode.value += data[i][4];
+      prodqty.value += data[i][3];
+
+      if(i < data.length-1){
+        prodcode.value += ";";
+        prodqty.value += ";";
+      }
+    }
+  }
 </script>
 @stop

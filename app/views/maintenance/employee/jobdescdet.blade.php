@@ -32,7 +32,7 @@
 @section('content')
         <div class="panel-body">
                 <div class="content-row">
-                    <center><h5 class="content-row-title" style="font-size:25px">Employee Maintenance<hr></h5></center>
+                    <center><h5 class="content-row-title" style="font-size:25px">Company Maintenance<hr></h5></center>
                     
                     <div class="btn-group btn-group-justified">
                     <a href="{{URL::to('/maintenance/employee/branchdet')}}" class="btn btn-primary">Branch Details</a>
@@ -71,16 +71,6 @@
                                         <textarea id="description" name = "description" class="form-control" rows="3" placeholder="Description"></textarea>
                                     </div>
                                 </div>
-                              <div class="form-group">
-                                <label class="control-label col-sm-2">User Level</label>
-                                <div class="col-sm-3">
-                                    <select class = "form-control" id = "ulevel" onchange="setUserLevel()">
-                                        <option value = "1">1</option>
-                                        <option value = "2">2</option>
-                                        <option value = "3">3</option>
-                                </select>
-                                </div>
-                            </div>
 
 
                               <div class="form-group">
@@ -109,7 +99,6 @@
                                       									<th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Member ID: activate to sort column descending" style="width: 249px;">Job Code</th>
                                                                         <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Last Name: activate to sort column descending" style="width: 249px;">Job Name</th>
                                       									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 400px;">Job Description</th>
-                                      									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Middle Name: activate to sort column ascending" style="width: 187px;">User Level</th>
                                       									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Options</th>
                                       								</tr>
                                       								</tr>
@@ -118,7 +107,7 @@
                                       							    <?php
                                       							        $counter = 0;
 
-                                      							        $resultJobs = DB::select("SELECT strEJCode, strEJName, strEJDescription, intUserLevel FROM tblEmpJobDesc WHERE intStatus = 1");
+                                      							        $resultJobs = DB::select("SELECT strEJCode, strEJName, strEJDescription FROM tblEmpJobDesc WHERE intStatus = 1");
 
                                                                         foreach($resultJobs as $data){
                                                                             if($counter%2 == 0){
@@ -132,12 +121,11 @@
                                                                             echo '<td class="sorting_1">'.$data->strEJCode.'</td>';
                                                                             echo '<td>'.$data->strEJName.'</td>';
                                                                             echo '<td>'.$data->strEJDescription.'</td>';
-                                                                            echo '<td>'.$data->intUserLevel.'</td>';
                                                                             echo '
                                                                                 <td align="center">
                                                                                   <table>
                                                                                     <tr>
-                                                                                        <button type="button" class="btn btn-success btn-block" href="#jobform" data-toggle="collapse" onClick="setFormData(\''.$data->strEJCode.'\',\''.$data->strEJName.'\',\''.$data->strEJDescription.'\',\''.$data->intUserLevel.'\')"><span class="glyphicon glyphicon-pencil"></span></button>
+                                                                                        <button type="button" class="btn btn-success btn-block" href="#jobform" data-toggle="collapse" onClick="setFormData(\''.$data->strEJCode.'\',\''.$data->strEJName.'\',\''.$data->strEJDescription.'\')"><span class="glyphicon glyphicon-pencil"></span></button>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <button type="button" class="btn btn-danger btn-block" data-target="#delete" data-toggle="modal" onClick="delMessage(\''.$data->strEJCode.'\',\''.$data->strEJName.'\')"><span class="glyphicon glyphicon-remove"></span></button>
@@ -190,12 +178,10 @@
     }
 </script>
 <script>
-    function setFormData($code, $name, $description, $level){
+    function setFormData($code, $name, $description){
         document.getElementById('code').value = $code;
         document.getElementById('name').value = $name;
         document.getElementById('description').value = $description;
-        document.getElementById('ulevel').value = $level;
-        document.getElementById('level').value = $level;
         document.getElementById('job_form').action = "{{URL::to('/maintenance/employee/jobdet/update-job')}}";
     }
 </script>

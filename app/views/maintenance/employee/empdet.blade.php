@@ -32,7 +32,7 @@
 @section('content')
         <div class="panel-body">
                 <div class="content-row">
-                    <center><h5 class="content-row-title" style="font-size:25px">Employee Maintenance<hr></h5></center>
+                    <center><h5 class="content-row-title" style="font-size:25px">Company Maintenance<hr></h5></center>
                     
                   <div class="btn-group btn-group-justified">
                             <a href="{{URL::to('/maintenance/employee/branchdet')}}" class="btn btn-primary">Branch Details</a>
@@ -95,40 +95,8 @@
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class = "col-md-4 control-label"><h5> Job Details </h5></label>
-                              </div>
-                              <div class="form-group">
-                                <label class = "col-md-2 control-label">Job Title</label>
-                                <div class="col-md-10">
-                                  <select class="form-control" id="jobcode" name="jobcode">
-									    <?php
-									        $jobs = DB::select('SELECT strEJName FROM tblEmpJobDesc');
-
-									        foreach($jobs as $data){
-									            echo '<option value="'.$data->strEJName.'">'.$data->strEJName.'</option>';
-									        }
-									    ?>
-									</select>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class = "col-md-2 control-label">Branch</label>
-                                <div class="col-md-10">
-                                  <select class="form-control" id="branchcode" name="branchcode">
-                                         <?php
-									        $jobs = DB::select('SELECT strBranchName FROM tblBranches');
-
-									        foreach($jobs as $data){
-									            echo '<option value="'.$data->strBranchName.'">'.$data->strBranchName.'</option>';
-									        }
-									    ?>
-									</select>
-                                </div>
-
-                                </div>
-                              <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                  <button type="submit" class="btn btn-info"">Submit</button>
+                                  <button type="submit" class="btn btn-info">Submit</button>
                                   <button class="btn btn-info" type="cancel" href="#" data-toggle="collapse">Cancel</button>
                                 </div>
                               </div>
@@ -155,8 +123,6 @@
                                       									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Middle Name: activate to sort column ascending" style="width: 187px;">Last Name</th>
                                       									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Address</th>
                                       									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Contact Number</th>
-                                      									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Job Title</th>
-                                      									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Branch</th>
                                       									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Option: activate to sort column ascending" style="width: 147px;">Option</th>
 
                                       								</tr>
@@ -166,11 +132,8 @@
                                       							    <?php
                                       							        $counter = 0;
 
-                                      							        $results = DB::select("SELECT e.strEmpCode, e.strEmpFName, e.strEmpMName, e.strEmpLName, e.strEmpAddress, e.strEmpContNum, j.strEJName, b.strBranchName
+                                      							        $results = DB::select("SELECT e.strEmpCode, e.strEmpFName, e.strEmpMName, e.strEmpLName, e.strEmpAddress, e.strEmpContNum
                                                                                                   FROM tblEmployee e
-                                                                                                  LEFT JOIN tblEmpJobDesc j ON e.strEmpJobCode = j.strEJCode
-                                                                                                  LEFT JOIN tblEmpBranch eb ON e.strEmpCode = eb.strEBEmpCode
-                                                                                                  LEFT JOIN tblBranches b ON eb.strEBBranchCode = b.strBranchCode
                                                                                                   WHERE e.intStatus;");
 
                                                                         foreach($results as $data){
@@ -188,8 +151,6 @@
                                                                             echo '<td>'.$data->strEmpLName.'</td>';
                                                                             echo '<td>'.$data->strEmpAddress.'</td>';
                                                                             echo '<td>'.$data->strEmpContNum.'</td>';
-                                                                            echo '<td>'.$data->strEJName.'</td>';
-                                                                            echo '<td>'.$data->strBranchName.'</td>';
                                                                             echo '
 
                                                                                 <td align="center">
@@ -201,9 +162,7 @@
                                                                                                                                                                                                                 $data->strEmpMName.'\',\''.
                                                                                                                                                                                                                 $data->strEmpLName.'\',\''.
                                                                                                                                                                                                                 $data->strEmpAddress.'\',\''.
-                                                                                                                                                                                                                $data->strEmpContNum.'\',\''.
-                                                                                                                                                                                                                $data->strBranchName.'\',\''.
-                                                                                                                                                                                                                $data->strEJName
+                                                                                                                                                                                                                $data->strEmpContNum.'\',\''
                                                                                                                                                                                                                 .'\')"><span class="glyphicon glyphicon-pencil"></span></button>
                                                                                     </tr>
                                                                                     <tr>
@@ -262,15 +221,13 @@
     }
 </script>
 <script>
-    function setFormData($code, $fname, $mname, $lname, $address, $contnum, $branchcode, $jobcode){
+    function setFormData($code, $fname, $mname, $lname, $address, $contnum){
         document.getElementById('code').value = $code;
         document.getElementById('fname').value = $fname;
         document.getElementById('mname').value = $mname;
         document.getElementById('lname').value = $lname;
         document.getElementById('address').value = $address;
         document.getElementById('contnum').value = $contnum;
-        document.getElementById('branchcode').value = $branchcode;
-        document.getElementById('jobcode').value = $jobcode;
         document.getElementById('emp_form').action = "{{URL::to('/maintenance/employee/empdet/update-employee')}}";
     }
 </script>
