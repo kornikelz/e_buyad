@@ -20,7 +20,7 @@
 @section('content')
   <div class="panel-body">
     <div class="content-row">
-      <center><h5 class="content-row-title" style="font-size:25px"><i class="glyphicon glyphicon-pencil"></i>&nbspMember Registration
+      <center><h5 class="content-row-title" style="font-size:25px"><i class="glyphicon glyphicon-pencil"></i>&nbsp Member Registration
       <hr>
       </h5></center>
 
@@ -47,7 +47,7 @@
             <br>
 
             <div class = "form-group">
-              <label class="col-md-3 control-label"><h5> Customer Details </h5></label>
+              <label class="col-md-3 control-label"><h5> Member Details </h5></label>
             </div>
 
             <div class="form-group">  

@@ -35,6 +35,6 @@ class PointLoadUtilController extends \BaseController {
 				Input::get('percpoint')
 			]);
 
-		return Redirect::to('/utils/pointload')->with('message','Mechanics successfully updated!');
+		return Redirect::to('/utils/pointload')->with('message','Mechanics Successfully Updated!');
 	}
 }

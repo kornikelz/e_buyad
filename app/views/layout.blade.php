@@ -68,7 +68,7 @@
                 <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>NAVIGATION</b></li>
 
                 <li>
-                  <a href="#demo4" class="list-group-item " data-toggle="collapse"><i class="glyphicon glyphicon-th"></i> Transaction  <span class="glyphicon glyphicon-chevron-right"></span></a>
+                  <a href="#demo4" class="list-group-item " data-toggle="collapse"><i class="fa fa-money"></i> Transaction  <span class="glyphicon glyphicon-chevron-right"></span></a>
                   <div class="collapse" id="demo4">
                     
                     <a href="#submem" class="list-group-item" data-toggle="collapse">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-user"></i> Membership <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -81,7 +81,7 @@
                     <a href="#subsale" class="list-group-item" data-toggle="collapse">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-shopping-cart"></i> Sale <span class="glyphicon glyphicon-chevron-right"></span></a>
                     <div class="collapse list-group-submenu" id="subsale">
                     <a href="{{URL::to('transaction/sell')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbsp<i class="glyphicon glyphicon-shopping-cart"></i> Make A Sale </a>
-                    <a href="{{URL::to('transaction/return')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbsp<i class="glyphicon glyphicon-shopping-cart"></i> Accept Return </a>
+                    <a href="{{URL::to('transaction/return')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbsp<i class="glyphicon glyphicon-transfer"></i> Accept Return </a>
                     </div>
 
                     <a href="{{URL::to('transaction/reload')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-refresh"></i> Reload </a>
@@ -99,6 +99,20 @@
                   <a href="#utilmenu" class="list-group-item " data-toggle="collapse"><i class="glyphicon glyphicon-cog"></i> Utilities <span class="glyphicon glyphicon-chevron-right"></span></a>
                   <div class="collapse" id="utilmenu">
                     <a href="{{URL::to('utils/pointload')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-tasks"></i> Point/Load Mechanics </a>
+                    <a href="#Utils" class="list-group-item" data-toggle="collapse">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-tasks"></i> Data Reactivation <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <div class="collapse list-group-submenu" id="Utils">
+                      <a href="{{URL::to('/utils/memberreactivation')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbsp <i class="fa fa-user"></i>Member</a>
+
+                      <a href="#Utilis" class="list-group-item" data-toggle="collapse">&nbsp &nbsp &nbsp &nbsp &nbsp <i class="glyphicon glyphicon-barcode"></i>Products<span class="glyphicon glyphicon-chevron-right"></span></a>
+                      <div class="collapse list-group-submenu" id="Utilis">
+                        <a href="{{URL::to('/utils/therareactivation')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp<i class="fa fa-medkit"></i>Medicine</a>
+                        <a href="{{URL::to('/utils/prodcatreactivation')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp<i class="fa fa-medkit"></i>Non-Medicine</a>
+                        <a href="{{URL::to('/utils/formreactivation')}}" class="list-group-item" style="font-size:14px">&nbsp&nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp<i class="glyphicon glyphicon-briefcase"></i>Forms, Packages & UOM</a>
+                      </div>
+
+                      <a href="{{URL::to('/utils/branchreactivation')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbsp <i class="glyphicon glyphicon-briefcase"></i>Company</a>
+                      <a href="{{URL::to('/utils/discountreactivation')}}" class="list-group-item" style="font-size:12px">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <i class="glyphicon glyphicon-tags"></i>Discount, Promos and Packages</a>
+                    </div>
                   </div>
                 </li>
 
@@ -108,9 +122,9 @@
                     <a href="{{URL::to('/maintenance/members')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-user"></i> Members </a>
                     <a href="#SubMenu1" class="list-group-item" data-toggle="collapse">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-barcode"></i> Products  <span class="glyphicon glyphicon-chevron-right"></span></a>
                     <div class="collapse list-group-submenu" id="SubMenu1">
-                      <a href="{{URL::to('/maintenance/products/med')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbspMedicine</a>
+                      <a href="{{URL::to('/maintenance/products/med')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbsp <i class="fa fa-medkit"></i>Medicine</a>
                       <a href="{{URL::to('/maintenance/products/nonmed')}}" class="list-group-item">&nbsp &nbsp &nbsp &nbsp &nbspNon-medicine</a>
-                      <a href="{{URL::to('/maintenance/fpu/forms')}}" class="list-group-item" style="font-size:12px">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Forms, Packaging and UOM</a>
+                      <a href="{{URL::to('/maintenance/fpu/forms')}}" class="list-group-item" >&nbsp &nbsp &nbsp &nbsp &nbsp Forms, Packaging and UOM</a>
                     </div>
                     <a href="{{URL::to('/maintenance/employee')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-briefcase"></i>Company</a>
                     <a href="{{URL::to('maintenance/ppd/discount')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-tags"></i>Discount, Promos and Packages</a>
