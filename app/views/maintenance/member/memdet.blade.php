@@ -267,19 +267,19 @@
                     </div>
                   </div>
 
-                                <div class="modal fade" id="prompt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h2 class="modal-title" id="myModalLabel" style="text-align:center;color:#DA4453">!</h2>
-                                          </div>
-                                                <div class="modal-body">
-                                                  <p> <h4 style="text-align:center">{{Session::get('message')}} </h4> </p><br><br>
-                                              </div>
-                                        </div>
-                                      </div>
-                                    </div>
+              <div class="modal fade" id="prompt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h2 class="modal-title" id="myModalLabel" style="text-align:center;color:#DA4453">!</h2>
+                        </div>
+                              <div class="modal-body">
+                                <p> <h4 style="text-align:center">{{Session::get('message')}} </h4> </p><br><br>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 					   </div>

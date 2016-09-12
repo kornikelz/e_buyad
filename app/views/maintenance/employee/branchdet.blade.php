@@ -27,8 +27,7 @@
 @section('content')
         <div class="panel-body">
                 <div class="content-row">
-                    <center><h5 class="content-row-title" style="font-size:25px">Company Maintenance<hr></h5></center>
-                    
+                    <center><h5 class="content-row-title" style="font-size:25px"><i class="glyphicon glyphicon-briefcase"></i>&nbsp Company Maintenance<hr></h5></center>
                     <div class="btn-group btn-group-justified">
                         <a href="{{URL::to('/maintenance/employee/branchdet')}}" class="btn btn-info">Branch Details</a>
                         <a href="{{URL::to('/maintenance/employee/jobdet')}}" class="btn btn-primary">Job Description</a>

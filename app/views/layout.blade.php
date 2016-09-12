@@ -12,6 +12,8 @@
    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
 
     {{HTML::style('dist/css/site.min.css')}}
+    {{HTML::style('bootflat-admin/css/animate.min.css')}}
+
 
     {{HTML::script('js/jquery.min.js')}}
     
@@ -53,7 +55,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse" style="padding-bottom:10px;">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="{{URL::to('/')}}"><b>SIGN OUT</b></a></li>
+                <li class="active"><a href="{{URL::to('/')}}"><i class="glyphicon glyphicon-off" style="font-size:25px;"></i></a></li>
             </ul>
 
           </div><!-- /.navbar-collapse -->
@@ -67,6 +69,8 @@
             <ul class="list-group panel">
                 <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>NAVIGATION</b></li>
 
+                <li><a href="{{URL::to('dashboard')}}" class="list-group-item"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                                    
                 <li>
                   <a href="#demo4" class="list-group-item " data-toggle="collapse"><i class="fa fa-money"></i> Transaction  <span class="glyphicon glyphicon-chevron-right"></span></a>
                   <div class="collapse" id="demo4">
@@ -91,8 +95,16 @@
                   </div>
                 </li>
 
-                <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Reports </a></li>
-                
+                <li>
+                  <a href="#report" class="list-group-item " data-toggle="collapse"><i class="glyphicon glyphicon-list-alt"></i> Reports <span class="glyphicon glyphicon-chevron-right"></span></a>
+                  <div class="collapse" id="report">
+
+                    <a href="{{URL::to('reports/salesreport')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-list-alt"></i> Sales Summary Report </a>
+                    <a href="{{URL::to('reports/productreport')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-list-alt"></i> Product Sales Report </a>
+                    <a href="{{URL::to('reports/creditreport')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-list-alt"></i> Credit Load Sales Report </a>
+                    <a href="{{URL::to('reports/egcreport')}}" class="list-group-item">&nbsp &nbsp &nbsp<i class="glyphicon glyphicon-list-alt"></i> Electronic Gift Card Sales Report </a>
+
+
                 <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-question-sign"></i> Queries </a></li>
                 
                 <li>

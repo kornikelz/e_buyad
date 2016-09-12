@@ -189,3 +189,19 @@ Route::get('/utils/discountreactivation','MemberReactivationController@discount'
 Route::get('/utils/promoreactivation','MemberReactivationController@promos');
 
 Route::get('/utils/packagereactivation','MemberReactivationController@package');
+
+//dashboard
+Route::get('/dashboard','DashboardController@dashboard');
+
+//reports
+Route::get('/reports/salesreport','ReportsController@sales');
+Route::post('/reports/salesreport/genreport','ReportsController@salesreport');
+
+Route::get('/reports/productreport','ReportsController@product');
+Route::post('/reports/productreport/genreport','ReportsController@productreport');
+
+Route::get('/reports/creditreport','ReportsController@credit');
+Route::post('/reports/creditreport/genreport','ReportsController@creditreport');
+
+Route::get('/reports/egcreport','ReportsController@egc');
+Route::post('/reports/egcreport/genreport','ReportsController@egcreport');

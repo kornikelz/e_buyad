@@ -29,7 +29,7 @@
 </head>
 <body> 
 <div class="container" style="background-color:rgba(81, 85, 93, 0.67); padding-bottom:1%">
-    <form class="form-signin" role="form" action="{{URL::to('/transaction/sell')}}">
+    <form class="form-signin" role="form" action="{{URL::to('/dashboard')}}">
         <center style="padding-bottom:10%;">
             <span><img src="/images/logo.png"/></span><br>
             <p><strong style="font-family:Kaushan Script; font-size:4.5em; color:#fff"> e-BUYad </strong></p>
